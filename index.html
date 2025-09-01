@@ -8,7 +8,35 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css" />
+  <style>
+    *{box-sizing:border-box}html,body{margin:0;padding:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans KR','Apple SD Gothic Neo',sans-serif;color:#0b1324;background:#f7f9fc}
+    a{color:#0b5ed7;text-decoration:none}a:hover{text-decoration:underline}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    .hero{padding:48px 0;text-align:center}
+    .hero h1{font-size:44px;margin:0 0 8px}
+    .subtitle{font-weight:600;opacity:.8;margin:0}.contact{margin:6px 0 12px}
+    .pill{display:inline-block;background:#e8f1ff;color:#0b5ed7;border:1px solid #cfe1ff;padding:8px 14px;border-radius:999px;font-weight:600}
+    .card{display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:center;background:#fff;border:1px solid #e7eef7;border-radius:18px;padding:18px 18px;box-shadow:0 6px 30px rgba(10,30,60,.06);margin:18px 0}
+    .card h2{font-size:28px;margin:0 0 8px}
+    .meta{list-style:none;padding:0;margin:0 0 12px;display:flex;flex-wrap:wrap;gap:14px}
+    .meta li{background:#f1f6ff;border:1px solid #e1ebff;border-radius:10px;padding:6px 10px}
+    .content p{margin:0 0 12px;line-height:1.6}
+    .actions .btn{display:inline-block;background:#0b5ed7;color:white;padding:10px 16px;border-radius:10px;font-weight:700;box-shadow:0 4px 16px rgba(11,94,215,.25)}
+    .actions .btn:hover{filter:brightness(.95)}
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .gallery img{width:100%;height:128px;object-fit:cover;border-radius:12px;border:1px solid #e3ecf7;box-shadow:0 3px 12px rgba(10,30,60,.06);cursor:pointer}
+    .about{margin:40px 0 0;background:linear-gradient(135deg,#f0f7ff,#fbfdff);padding:20px;border:1px solid #e6eef9;border-radius:16px}
+    .about h3{margin-top:0}
+    .footer{opacity:.7;text-align:center;margin:40px auto}
+    @media (max-width:900px){.card{grid-template-columns:1fr}.hero h1{font-size:36px}}
+
+    /* Lightbox */
+    .lightbox{position:fixed;inset:0;background:rgba(7,15,30,.85);display:none;align-items:center;justify-content:center;z-index:9999}
+    .lightbox.open{display:flex}
+    .lightbox img{max-width:92vw;max-height:88vh;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+    .lightbox .close{position:absolute;top:16px;right:20px;font-size:28px;color:#fff;cursor:pointer;font-weight:800}
+    .lightbox .caption{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);color:#f0f4ff;background:rgba(0,0,0,.35);padding:8px 14px;border-radius:10px;font-size:14px}
+  </style>
 </head>
 <body>
   <header class="container">
@@ -23,9 +51,6 @@
   <main class="container">
     <!-- Project: 3D 동방홍마향 -->
     <section class="card">
-      <div class="media"><img src="./assets/t1.webp" alt="3D 동방홍마향 게임 플레이 GIF" /></div>
-      <div class="media"><img src="./assets/t2.webp" alt="3D 동방홍마향 게임 플레이 GIF" /></div>
-      <div class="media"><img src="./assets/t3.webp" alt="3D 동방홍마향 게임 플레이 GIF" /></div>
       <div class="content">
         <h2>3D 동방홍마향</h2>
         <ul class="meta">
@@ -40,12 +65,16 @@
           <a class="btn" target="_blank" href="https://youtu.be/-t3c5LnRsM8?list=PLQOZDBA1-tCSS3H0zE1VpF45CmPFW3sCM">영상 보기</a>
         </div>
       </div>
+      <div class="gallery">
+        <!-- ↓ 썸네일(src)과 큰 이미지(data-full) 경로만 바꿔서 쓰세요 -->
+        <img src="./assets/t1.webp" data-full="./assets/t1.webp" alt="동방홍마향 이미지 1">
+        <img src="./assets/t2.webp" data-full="./assets/t2.webp" alt="동방홍마향 이미지 2">
+        <img src="./assets/t3.webp" data-full="./assets/t3.webp" alt="동방홍마향 이미지 3">
+      </div>
     </section>
 
     <!-- Project: 라미에르 사가 RPG -->
     <section class="card">
-      <div class="media"><img src="./assets/r1.webp" alt="라미에르 사가 RPG 게임 플레이 GIF" /></div>
-      <div class="media"><img src="./assets/r2.webp" alt="라미에르 사가 RPG 게임 플레이 GIF" /></div>
       <div class="content">
         <h2>라미에르 사가 RPG</h2>
         <ul class="meta">
@@ -60,12 +89,14 @@
           <a class="btn" target="_blank" href="https://www.youtube.com/watch?v=YNS9acrwsFM&list=PLQOZDBA1-tCSS3H0zE1VpF45CmPFW3sCM&index=11">영상 보기</a>
         </div>
       </div>
+      <div class="gallery">
+        <img src="./assets/r1.webp" data-full="./assets/r1.webp" alt="라미에르 이미지 1">
+        <img src="./assets/r2.webp" data-full="./assets/r2.webp" alt="라미에르 이미지 2">
+      </div>
     </section>
 
     <!-- Project: 블로하이 -->
     <section class="card">
-      <div class="media"><img src="./assets/b1.webp" alt="블로하이 게임 플레이 GIF" /></div>
-      <div class="media"><img src="./assets/b2.webp" alt="블로하이 게임 플레이 GIF" /></div>
       <div class="content">
         <h2>블로하이</h2>
         <ul class="meta">
@@ -79,9 +110,12 @@
           <a class="btn" target="_blank" href="https://youtu.be/mSZCTD-elCY?list=PLQOZDBA1-tCSS3H0zE1VpF45CmPFW3sCM">영상 보기</a>
         </div>
       </div>
+      <div class="gallery">
+        <img src="./assets/b1.webp" data-full="./assets/b1.webp" alt="블로하이 이미지 1">
+        <img src="./assets/b2.webp" data-full="./assets/b2.webp" alt="블로하이 이미지 2">
+      </div>
     </section>
 
-    <!-- About -->
     <section class="about">
       <h3>About</h3>
       <p>Unity &amp; C# 기반으로 프로토타입을 빠르게 제작하고, 전투/시스템/UX를 유기적으로 다루는 것을 선호합니다. 일본어 JLPT N1 보유.</p>
@@ -91,5 +125,41 @@
   <footer class="container footer">
     <p>© 황치원 · <a href="mailto:cpprxxxooo@gmail.com">cpprxxxooo@gmail.com</a></p>
   </footer>
+
+  <!-- Lightbox Root -->
+  <div class="lightbox" id="lightbox">
+    <span class="close" id="lbClose">×</span>
+    <img id="lbImg" src="" alt="preview">
+    <div class="caption" id="lbCap"></div>
+  </div>
+
+  <script>
+    // 간단한 라이트박스
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbCap = document.getElementById('lbCap');
+    const lbClose = document.getElementById('lbClose');
+
+    document.addEventListener('click', e => {
+      const t = e.target;
+      if (t.matches('.gallery img')) {
+        const full = t.getAttribute('data-full') || t.src;
+        lbImg.src = full;
+        lbCap.textContent = t.alt || '';
+        lb.classList.add('open');
+      }
+      if (t === lb || t === lbClose) {
+        lb.classList.remove('open');
+        lbImg.src = '';
+      }
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        lb.classList.remove('open');
+        lbImg.src = '';
+      }
+    });
+  </script>
 </body>
 </html>
